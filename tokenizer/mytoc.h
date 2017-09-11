@@ -1,25 +1,10 @@
-// for puts
-#include <stdio.h>
+#ifndef mytoc
+#define mytoc
 
-// for exit
-#include <stdlib.h>
+#define IN 1 /* Inside a word */
+#define OUT 0 /* outside a 'd */
 
-// for perror
-#include <errno.h>
+int countWords( char[] str );
+char ** mytoc( char *str, char delim );
 
-// for open()
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-
-// for close
-#include <unistd.h>
-
-#include "readlines.h"
-#include "assert2.h"
-
-#define BUFSIZE 1024
-
-int main(int argc, char **argv) {
-
-}
+#endif

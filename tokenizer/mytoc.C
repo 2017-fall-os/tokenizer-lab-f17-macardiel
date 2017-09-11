@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define IN 1 /* Inside a word */
-#define OUT 0 /* outside a 'd */
-
 int countWords( char[] str ) {
     int n, c, nw, state;
     state = OUT;
@@ -28,11 +25,11 @@ char ** mytoc( char *str, char delim ) {
     
     int i;
     for( i = 0; str[i]; i++ ) {
-        if( str[i] == ' ' ) {
+        if( str[i] == delim ) {
             temp = str[i];
-            str[i] = '\0';
+            //str[i] = '\0';
         }
-        else if( str[i] != '\0' && temp == ' ') {
+        else if( temp == ' ') {
             tokens[ Index++ ] = &str[i];
             temp = str[i];
         }
