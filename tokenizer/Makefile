@@ -1,8 +1,14 @@
-all: printFile
+all: test
 
 CFLAGS = -g -O2
 
-mytoc: mytoc.o strcopy.o readlines.o
-	cc -o printFile printFile.o strcopy.o readlines.o
+test: test.o mytoc.o
+	cc -o test test.oo mytoc.o
+
+mytoc.o: mytoc.c
+	cc -c mytoc.c
+
+test.o: test.c mytoc.h
+	cc -c mytoc.c
 clean:
 	rm -f  *.o test
