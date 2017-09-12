@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "mytoc.h"
+#include "MyToc.h"
 
 void printTokenV( char **tVector ) {
     char **tvTemp;
@@ -19,6 +19,7 @@ void printTokenV( char **tVector ) {
 
 int main(int argc, char **argv ) {
     char **tokenV;
+    char *test1, *test2, *test3, *test4, *test5;
     char input[100];
     
     *test1 = "Hello my dog's name is Darwin";

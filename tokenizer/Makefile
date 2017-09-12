@@ -1,8 +1,14 @@
-all: test
+CC = gcc
+CFLAGS = -I.
+DEPS = MyToc.h
+OBJ = MyToc.o test.o
 
-CFLAGS = -g -O2
-
-test: test.o mytoc.o
-	cc -o test test.oo mytoc.o
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+	
+test: $(OBJ)
+	gcc -o $@ $^ $(CFLAGS)
+	
 clean:
-	rm -f  *.o test
+	rm -f *.o
+
