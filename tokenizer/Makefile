@@ -10,5 +10,5 @@ test: $(OBJ)
 	gcc -o $@ $^ $(CFLAGS)
 	
 clean:
-	rm -f *.o
+	rm -f *.o test
 

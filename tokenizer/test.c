@@ -27,7 +27,7 @@ int main() {
     char test5[] = " HelloWorld";
     char input[100];
         
-    printf( "Test1: \"%s\"\n", test1 );
+    printf( "\nTest1: \"%s\"\n", test1 );
     tokenV = mytoc( test1, ' ');
     printTokens( tokenV );
     
@@ -47,11 +47,24 @@ int main() {
     tokenV = mytoc( test5, ' ');
     printTokens( tokenV );
     
-    printf("\n----------\n");
+    printf("----------\n\n");
     
-    printf( "$\n" );
-    scanf( "%s", &input );
+    int exitKey = 1;
+    
+LOOP:;
+    printf( "$ " );
+    fgets(input, 100, stdin );
+    
+    exitKey = strncmp(input, "exit", 4);
+    //printf( "exitkey = %d\n", exitKey );
+    
+    if( !(exitKey) ) goto EXIT_TEST;
     
     tokenV = mytoc( input, ' ' );
     printTokens( tokenV );
+    
+    goto LOOP;
+    
+EXIT_TEST:;
+    exit(1);
 }
