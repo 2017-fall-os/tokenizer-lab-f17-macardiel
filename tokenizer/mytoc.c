@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "mytoc.h"
 
-int countWords( char[] str ) {
+int countWords( char *paragraph ) {
     int n, c, nw, state;
     state = OUT;
     nw = 0;
-    for( n = 0; str[n]; n++ ) {
-        c = str[n];
-        if( c == ' ' || c == '\n' || c = '\t' )
+    for( n = 0; paragraph[n]; n++ ) {
+        c = paragraph[n];
+        if( c == ' ' || c == '\n' || c == '\t' )
             state = OUT;
         else if( state == OUT ) {
             state = IN;
@@ -16,22 +17,23 @@ int countWords( char[] str ) {
     }
     return nw;
 }
-char ** mytoc( char *str, char delim ) {
-    int numWords = countWords( str );
+
+char **mytoc( char *strSep, char delim ){
+    int numWords = countWords( strSep );
     int Index = 0;
-    char **tokens = calloc(tCount+2, sizeof(char*));
+    char **tokens = calloc( numWords+2, sizeof(char*));
     
     char temp = ' ';
     
     int i;
-    for( i = 0; str[i]; i++ ) {
-        if( str[i] == delim ) {
-            temp = str[i];
-            str[i] = '\0';
+    for( i = 0; strSep[i]; i++ ) {
+        if( strSep[i] == delim ) {
+            temp = strSep[i];
+            strSep[i] = '\0';
         }
         else if( temp == ' ') {
-            tokens[ Index++ ] = &str[i];
-            temp = str[i];
+            tokens[ Index++ ] = &strSep[i];
+            temp = strSep[i];
         }
     }
     return tokens;

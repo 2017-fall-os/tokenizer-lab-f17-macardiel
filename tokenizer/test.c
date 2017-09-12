@@ -12,36 +12,42 @@ void printTokenV( char **tVector ) {
     
     for( n = 0; *tvTemp; n++ ) {
         printf( "%d: %s\n", n, *tvTemp );
-        tvTemp = tvTemp[1];
+        tvTemp = tvTemp+2;
     }
     printf( "\n" );
 }
 
 int main(int argc, char **argv ) {
-    
-    char **test = (char **)malloc(sizeof(char*) * 6 // Test case strings
     char **tokenV;
-    
     char input[100];
     
-    test[0] = "Hello my dog's name is Darwin";
-    test[1] = "     Hello   World!    ";
-    test[2] = "";
-    test[3] = "          ";
-    test[4] = " HelloWorld";
-    
-    int testNum;
-    int n;
-    for( testNum = 0; testNum < 5; testNum++ ) {
+    *test1 = "Hello my dog's name is Darwin";
+    *test2 = "     Hello   World!    ";
+    *test3 = "";
+    *test4 = "          ";
+    *test5 = " HelloWorld";
         
-        printf( "%s:\n", test[1] );
-        tokenV = mytoc( test[1], ' ');
-        printTokenV( tokenV );
-        
-        printf("\n");
-    }
+    printf( "%s:\n", *test1 );
+    tokenV = mytoc( *test1, ' ');
+    printTokenV( tokenV );
     
-    printf( "-----------" );
+    printf( "%s:\n", *test2 );
+    tokenV = mytoc( *test2, ' ');
+    printTokenV( tokenV );
+    
+    printf( "%s:\n", *test3 );
+    tokenV = mytoc( *test3, ' ');
+    printTokenV( tokenV );
+    
+    printf( "%s:\n", *test4 );
+    tokenV = mytoc( *test4, ' ');
+    printTokenV( tokenV );
+    
+    printf( "%s:\n", *test5 );
+    tokenV = mytoc( *test5, ' ');
+    printTokenV( tokenV );
+    
+    printf("\n----------\n");
     
     printf( "$\n" );
     scanf( "%s", &input );
