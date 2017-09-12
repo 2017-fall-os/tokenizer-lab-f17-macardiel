@@ -1,23 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 
 #include "MyToc.h"
 
-void printTokenV( char **tVector ) {
+void printTokens( char **tVector ) {
     char **tvTemp;
     int n;
     
     tvTemp = tVector;
     
-    for( n = 0; *tvTemp; n++ ) {
-        printf( "%d: %s\n", n, *tvTemp );
-        tvTemp = tvTemp+2;
+    for( n = 0; *tvTemp != '\0'; n++ ) {
+        printf( "%d: \"%s\"\n", n, *tvTemp );
+        tvTemp++;
     }
     printf( "\n" );
 }
 
-int main(int argc, char **argv ) {
+int main() {
     char **tokenV;
     char test1[] = "Hello my dog's name is Darwin";
     char test2[] = "     Hello   World!    ";
@@ -26,25 +27,25 @@ int main(int argc, char **argv ) {
     char test5[] = " HelloWorld";
     char input[100];
         
-    printf( "%s:\n", test1 );
+    printf( "Test1: \"%s\"\n", test1 );
     tokenV = mytoc( test1, ' ');
-    printTokenV( tokenV );
+    printTokens( tokenV );
     
-    printf( "%s:\n", test2 );
+    printf( "Test2: \"%s\"\n", test2 );
     tokenV = mytoc( test2, ' ');
-    printTokenV( tokenV );
+    printTokens( tokenV );
     
-    printf( "%s:\n", test3 );
+    printf( "Test3: \"%s\"\n", test3 );
     tokenV = mytoc( test3, ' ');
-    printTokenV( tokenV );
+    printTokens( tokenV );
     
-    printf( "%s:\n", test4 );
+    printf( "Test4: \"%s\"\n", test4 );
     tokenV = mytoc( test4, ' ');
-    printTokenV( tokenV );
+    printTokens( tokenV );
     
-    printf( "%s:\n", test5 );
+    printf( "Test5: \"%s\"\n", test5 );
     tokenV = mytoc( test5, ' ');
-    printTokenV( tokenV );
+    printTokens( tokenV );
     
     printf("\n----------\n");
     
@@ -52,5 +53,5 @@ int main(int argc, char **argv ) {
     scanf( "%s", &input );
     
     tokenV = mytoc( input, ' ' );
-    printTokenV( tokenV );
+    printTokens( tokenV );
 }
